@@ -1,43 +1,47 @@
-# Análise de Dados de Produção
+# Dashboard Industrial em Python
 
-Este projeto realiza uma análise básica de dados de produção a partir de um arquivo Excel, calculando indicadores como eficiência e taxa de defeitos.
+Este projeto cria um dashboard interativo em Streamlit para analisar dados de produção industrial com base em uma planilha pública exportada do Google Sheets.
+
+## O que o projeto faz
+
+- carrega os dados diretamente do link remoto do Google Sheets;
+- limpa e organiza a base;
+- calcula indicadores de produção, defeitos e eficiência;
+- exibe gráficos interativos e métricas em uma interface web.
 
 ## Estrutura do projeto
 
-- `main.py`: ponto de entrada da análise.
-- `src/`: módulos com funções de leitura, limpeza e indicadores.
-- `dados/`: arquivos de dados usados no projeto.
-- `notebooks/`: notebooks para exploração e análise.
-- `relatorios/`: pastas para relatórios gerados.
+- `src/dashboard.py`: aplicação principal do dashboard.
+- `src/leitura.py`: leitura e persistência dos dados.
+- `src/limpeza.py`: limpeza e conversão das colunas.
+- `src/indicadores.py`: criação dos indicadores.
+- `main.py`: versão de linha de comando para análise.
+- `requirements.txt`: dependências do projeto.
 
 ## Requisitos
 
 - Python 3.10+
-- Dependências:
+- Dependências principais:
+  - streamlit
   - pandas
-  - openpyxl
+  - plotly
 
-## Como executar
-
-1. Crie e ative um ambiente virtual:
+## Como executar localmente
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run src/dashboard.py
 ```
 
-2. Instale as dependências:
+## Deploy no Streamlit Cloud
+
+1. envie este repositório para o GitHub;
+2. crie um novo app no Streamlit Cloud;
+3. selecione o repositório e use `app.py` ou `src/dashboard.py` como entrypoint;
+4. defina o comando de execução como:
 
 ```bash
-pip install pandas openpyxl
+streamlit run app.py
 ```
-
-3. Execute o projeto:
-
-```bash
-python main.py
-```
-
-## Exemplo de saída
-
-O script imprime as primeiras linhas do DataFrame com os indicadores calculados.

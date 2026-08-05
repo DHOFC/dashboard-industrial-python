@@ -1,10 +1,14 @@
 def criar_indicadores(df):
 
-    coluna_meta = "Meta" if "Meta" in df.columns else "Metas"
+
+    df["Atingimento_Meta"] = (
+        df["Pecas_Produzidas"] /
+        df["Meta"]    ) * 100
+
 
     df["Eficiencia"] = (
         df["Pecas_Produzidas"] /
-        df[coluna_meta]
+        df["Meta"]
     ) * 100
 
     df["Taxa_Defeitos"] = (
